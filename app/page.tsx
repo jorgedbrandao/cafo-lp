@@ -402,7 +402,7 @@ export default function Home() {
           <div className="pricing-grid reveal">
             <div className="price-card">
               <div className="price-plan">Para começar</div>
-              <div className="price-name">Beta</div>
+              <div className="price-name">Essencial</div>
               <p className="price-tagline">
                 PDV completo + dashboards financeiros. Tudo que você precisa para
                 sair do papel e do caderno.
@@ -421,7 +421,7 @@ export default function Home() {
             <div className="price-card featured">
               <div className="price-card-badge">Recomendado</div>
               <div className="price-plan">Para crescer</div>
-              <div className="price-name">Business</div>
+              <div className="price-name">Pro</div>
               <p className="price-tagline">
                 IA integrada + consultoria de 1h com especialista em cafeterias.
                 Para o dono que quer mais do que um PDV.
