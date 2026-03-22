@@ -1,99 +1,69 @@
 'use client';
 
 import { useState } from 'react';
+import CafoLogo from './CafoLogo';
+
+const weekData = [
+  { day: 'Seg', label: 'Segunda', revenue: 890,  clients: 27, avg: '32,96', inactive: 8,  novos: 1, delta: '−28% vs média', deltaColor: '#e07050' },
+  { day: 'Ter', label: 'Terça',   revenue: 1160, clients: 34, avg: '34,12', inactive: 11, novos: 2, delta: '+30% vs seg',   deltaColor: '#2d8a5a' },
+  { day: 'Qua', label: 'Quarta',  revenue: 1330, clients: 39, avg: '34,10', inactive: 12, novos: 3, delta: '+15% vs ter',   deltaColor: '#2d8a5a' },
+  { day: 'Qui', label: 'Quinta',  revenue: 1250, clients: 36, avg: '34,72', inactive: 14, novos: 2, delta: '−6% vs qua',    deltaColor: '#e07050' },
+  { day: 'Sex', label: 'Sexta',   revenue: 2080, clients: 57, avg: '36,49', inactive: 18, novos: 7, delta: '+66% vs qui',   deltaColor: '#2d8a5a' },
+  { day: 'Sáb', label: 'Sábado',  revenue: 1240, clients: 38, avg: '32,63', inactive: 14, novos: 3, delta: '+8% vs ontem',  deltaColor: '#2d8a5a' },
+  { day: 'Dom', label: 'Domingo', revenue: 750,  clients: 23, avg: '32,61', inactive: 6,  novos: 1, delta: '−40% vs sáb',   deltaColor: '#e07050' },
+];
+
+const dayInsights = [
+  'Segunda está 28% abaixo da média. Uma promoção às 7h–9h pode gerar +R$ 1.200/mês.',
+  'Terça na média histórica. Um combo de tarde pode aumentar o ticket médio.',
+  'Quarta é seu 3º melhor dia — prepare o estoque com antecedência.',
+  'Quinta sólido. Lance uma campanha para trazer mais clientes na sexta.',
+  'Sexta é seu melhor dia (+66% vs seg). Garanta insumos para o final de semana.',
+  'Sábado acima da média. 38 clientes, 3 novos registrados hoje.',
+  'Domingo o mais tranquilo da semana — ideal para manutenção e treinamento.',
+];
+
+const MAX_REVENUE = Math.max(...weekData.map(d => d.revenue));
+const TODAY = 5;
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedDay, setSelectedDay] = useState(TODAY);
+  const sel = weekData[selectedDay];
 
   return (
     <>
-      {/* NAV */}
-      <nav className="nav-container">
-        <a href="#" className="nav-logo">ca<b>fo</b></a>
-
-        <ul className="nav-links">
-          <li><a href="#produto">Produto</a></li>
-          <li><a href="#ia">IA & Agentes</a></li>
-          <li><a href="#preco">Preços</a></li>
-          <li><a href="#podcast">Podcast</a></li>
-        </ul>
-
-        <div className="nav-ctas">
-          <a href="#" className="btn btn-ghost">Entrar</a>
-          <a href="#preco" className="btn btn-solid">Começar grátis</a>
-          <button
-            className="nav-hamburger"
-            aria-label="Abrir menu"
-            aria-expanded={mobileMenuOpen}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </nav>
-
-      {/* MOBILE MENU */}
-      {mobileMenuOpen && (
-        <div className="mobile-menu open">
-          <ul>
-            <li><a href="#produto" onClick={() => setMobileMenuOpen(false)}>Produto</a></li>
-            <li><a href="#ia" onClick={() => setMobileMenuOpen(false)}>IA & Agentes</a></li>
-            <li><a href="#preco" onClick={() => setMobileMenuOpen(false)}>Preços</a></li>
-            <li><a href="#podcast" onClick={() => setMobileMenuOpen(false)}>Podcast</a></li>
-          </ul>
-          <div className="mobile-menu-ctas">
-            <a href="#" className="btn btn-ghost btn-lg">Entrar</a>
-            <a href="#preco" className="btn btn-solid btn-lg">Começar grátis</a>
+      {/* HERO WRAPPER — nav flutuante sobre a imagem */}
+      <div className="hero-wrap">
+        <nav className="nav-container">
+          <a href="#" className="nav-logo"><CafoLogo /></a>
+          <div className="nav-ctas">
+            <a href="#preco" className="btn btn-solid">Começar grátis</a>
           </div>
-        </div>
-      )}
+        </nav>
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-circle"></div>
+        {/* HERO */}
+        <section className="hero">
+          <div className="hero-eyebrow">Plataforma para cafeterias</div>
 
-        <div className="hero-eyebrow">Plataforma para cafeterias</div>
+          <h1>
+            A plataforma para gestão de cafeterias,<br />
+            do <em>barista</em> ao <em>dono.</em>
+          </h1>
 
-        <h1>
-          A plataforma para gestão<br />
-          de cafeterias, do <em>barista</em><br />
-          ao <em>dono.</em>
-        </h1>
+          <p className="hero-sub">
+            Finalmente — a tecnologia que faltava no mundo do café.
+            Uma plataforma integrada do barista à gestão, com IA, CRM
+            e crescimento para o negócio em café.
+          </p>
 
-        <p className="hero-sub">
-          Finalmente — a tecnologia que faltava no mundo do café.
-          Uma plataforma integrada do barista à gestão, com IA, CRM
-          e crescimento para o negócio em café.
-        </p>
-
-        <div className="hero-ctas">
-          <a href="#preco" className="btn btn-solid btn-lg">Começar grátis →</a>
-          <a href="#produto" className="btn btn-ghost btn-lg">Ver o produto</a>
-        </div>
-
-        <p className="hero-footnote">Sem cartão de crédito · Setup em 10 minutos · Suporte em português</p>
-
-        <div className="stats-bar reveal">
-          <div className="stat-item">
-            <div className="stat-val">20+</div>
-            <div className="stat-lbl">Cafeterias ativas</div>
+          <div className="hero-ctas">
+            <a href="#preco" className="btn btn-solid btn-lg">Começar grátis →</a>
+            <a href="#produto" className="btn btn-outline-white btn-lg">Ver o produto</a>
           </div>
-          <div className="stat-item">
-            <div className="stat-val">8.500+</div>
-            <div className="stat-lbl">Pedidos processados</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-val">{'<'} 60s</div>
-            <div className="stat-lbl">Por pedido</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-val">13×</div>
-            <div className="stat-lbl">ROI médio</div>
-          </div>
-        </div>
-      </section>
+
+          <p className="hero-footnote"><strong>Sem cartão de crédito</strong> · <strong>Setup em 10 minutos</strong></p>
+        </section>
+      </div>
 
       {/* FEATURES */}
       <section id="produto" className="feat-section">
@@ -107,32 +77,49 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="feat-cards reveal">
-            <div className="feat-card">
-              <div className="feat-num">01</div>
-              <div className="feat-card-title">Barista registra o pedido</div>
-              <div className="feat-card-body">
-                PDV rápido com botões grandes, modificadores na primeira tela.
-                Do pedido ao pagamento em menos de 60 segundos — mesmo no pico das 9h.
-                Funciona offline.
+          <div className="feat-rows">
+            {/* Row 1: PDV + Perfil do cliente */}
+            <div className="feat-row reveal">
+              <div className="feat-row-items">
+                <div className="feat-item">
+                  <div className="feat-num">01</div>
+                  <div className="feat-item-title">Barista registra o pedido</div>
+                  <div className="feat-item-body">
+                    PDV rápido com botões grandes, modificadores na primeira tela.
+                    Do pedido ao pagamento em menos de 60 segundos — mesmo no pico das 9h.
+                    Funciona offline.
+                  </div>
+                </div>
+                <div className="feat-item">
+                  <div className="feat-num">02</div>
+                  <div className="feat-item-title">Conheça seu cliente</div>
+                  <div className="feat-item-body">
+                    Nome, bebida preferida, frequência, histórico e notas pessoais — salvos
+                    automaticamente. O barista novo chega e já sabe quem é o João.
+                    O cliente se sente em casa.
+                  </div>
+                </div>
+              </div>
+              <div className="feat-row-img">
+                <img src="/cafo-product-1.png" alt="Interface do PDV e perfil de cliente no Cafo" />
               </div>
             </div>
-            <div className="feat-card">
-              <div className="feat-num">02</div>
-              <div className="feat-card-title">Conheça seu cliente</div>
-              <div className="feat-card-body">
-                Nome, bebida preferida, frequência, histórico e notas pessoais — salvos
-                automaticamente. O barista novo chega e já sabe quem é o João.
-                O cliente se sente em casa.
+
+            {/* Row 2: CRM */}
+            <div className="feat-row reveal" style={{ transitionDelay: '.1s' }}>
+              <div className="feat-row-img">
+                <img src="/cafo-product-2.png" alt="CRM do Cafo" />
               </div>
-            </div>
-            <div className="feat-card">
-              <div className="feat-num">03</div>
-              <div className="feat-card-title">CRM em 1 clique</div>
-              <div className="feat-card-body">
-                Cliente sumiu há 3 semanas? Um toque envia mensagem via WhatsApp,
-                personalizada. Segmentação automática: VIPs, inativos, aniversariantes,
-                novos.
+              <div className="feat-row-items">
+                <div className="feat-item">
+                  <div className="feat-num">03</div>
+                  <div className="feat-item-title">CRM em 1 clique</div>
+                  <div className="feat-item-body">
+                    Cliente sumiu há 3 semanas? Um toque envia mensagem via WhatsApp,
+                    personalizada. Segmentação automática: VIPs, inativos, aniversariantes,
+                    novos.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -142,74 +129,72 @@ export default function Home() {
       {/* BARISTA / STORYTELLING */}
       <section className="barista-section">
         <div className="wrap">
-          <div className="barista-layout">
-            <div className="barista-copy reveal">
-              <span className="eyebrow">Comunidade</span>
-              <h2 className="s-h2">Do balcão, conheça<br />quem faz o <em>café.</em></h2>
-              <p className="s-lead">
-                Baristas agora têm um sistema que fala a língua do café.
-                Feito por quem entende o que acontece atrás do balcão.
-              </p>
+          <div className="barista-header reveal">
+            <span className="eyebrow">Comunidade</span>
+            <h2 className="s-h2">Do balcão, conheça<br />quem faz o <em>café.</em></h2>
+            <p className="s-lead">
+              Baristas agora têm um sistema que fala a língua do café.
+              Feito por quem entende o que acontece atrás do balcão.
+            </p>
+          </div>
 
-              <div className="social-cards">
-                <div className="social-card">
-                  <div className="social-top">
-                    <div className="social-ava" style={{ background: '#FFF0EB', color: '#FB4D00' }}>LM</div>
-                    <div>
-                      <div className="social-name">Lucas Mendes</div>
-                      <div className="social-role">Head Barista · Café Origem, SP</div>
-                    </div>
-                    <div className="social-stars">★★★★★</div>
-                  </div>
-                  <p className="social-q">
-                    "Primeiro dia usando, minha cliente chegou e o sistema já mostrou o pedido dela.
-                    Ela perguntou como eu sabia. Disse que o café lembrava dela."
-                  </p>
-                </div>
-
-                <div className="social-card">
-                  <div className="social-top">
-                    <div className="social-ava" style={{ background: '#EDFAF3', color: '#2d8a5a' }}>AR</div>
-                    <div>
-                      <div className="social-name">Amanda Ramos</div>
-                      <div className="social-role">Dona · A Bela Cafeteria, RJ</div>
-                    </div>
-                    <div className="social-stars">★★★★★</div>
-                  </div>
-                  <p className="social-q">
-                    "Mandei mensagem pra 22 inativos. Em uma semana, 7 voltaram.
-                    Pagou a assinatura inteira e ainda me deu dado sobre o que estava errado."
-                  </p>
-                </div>
-
-                <div className="social-card">
-                  <div className="social-top">
-                    <div className="social-ava" style={{ background: '#EEF3FF', color: '#4060c8' }}>CP</div>
-                    <div>
-                      <div className="social-name">Carlos Pinto</div>
-                      <div className="social-role">Dono · Café Veredas, BH</div>
-                    </div>
-                    <div className="social-stars">★★★★★</div>
-                  </div>
-                  <p className="social-q">
-                    "Nunca soube que segunda era 30% mais fraca. O Cafo mostrou.
-                    Criei uma promoção. Segunda virou meu segundo melhor dia da semana."
-                  </p>
-                </div>
+          <div className="barista-video reveal" style={{ transitionDelay: '.08s' }}>
+            <div className="video-frame">
+              <div className="video-bg-text">Onde o café<br />te conhece.</div>
+              <div className="play-btn" role="button" aria-label="Assistir vídeo">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+              </div>
+              <div className="video-label">
+                <div className="video-label-title">Um dia atrás do balcão</div>
+                <div className="video-label-sub">Balcão por Cafo · EP 01 · 4 min</div>
               </div>
             </div>
+          </div>
 
-            <div className="reveal" style={{ transitionDelay: '.1s' }}>
-              <div className="video-frame">
-                <div className="video-bg-text">Onde o café<br />te conhece.</div>
-                <div className="play-btn" role="button" aria-label="Assistir vídeo">
-                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+          <div className="social-cards reveal" style={{ transitionDelay: '.16s' }}>
+            <div className="social-card">
+              <div className="social-top">
+                <div className="social-ava" style={{ background: '#FFF0EB', color: '#FB4D00' }}>LM</div>
+                <div>
+                  <div className="social-name">Lucas Mendes</div>
+                  <div className="social-role">Head Barista · Café Origem, SP</div>
                 </div>
-                <div className="video-label">
-                  <div className="video-label-title">Um dia atrás do balcão</div>
-                  <div className="video-label-sub">Balcão por Cafo · EP 01 · 4 min</div>
-                </div>
+                <div className="social-stars">★★★★★</div>
               </div>
+              <p className="social-q">
+                "Primeiro dia usando, minha cliente chegou e o sistema já mostrou o pedido dela.
+                Ela perguntou como eu sabia. Disse que o café lembrava dela."
+              </p>
+            </div>
+
+            <div className="social-card">
+              <div className="social-top">
+                <div className="social-ava" style={{ background: '#EDFAF3', color: '#2d8a5a' }}>AR</div>
+                <div>
+                  <div className="social-name">Amanda Ramos</div>
+                  <div className="social-role">Dona · A Bela Cafeteria, RJ</div>
+                </div>
+                <div className="social-stars">★★★★★</div>
+              </div>
+              <p className="social-q">
+                "Mandei mensagem pra 22 inativos. Em uma semana, 7 voltaram.
+                Pagou a assinatura inteira e ainda me deu dado sobre o que estava errado."
+              </p>
+            </div>
+
+            <div className="social-card">
+              <div className="social-top">
+                <div className="social-ava" style={{ background: '#EEF3FF', color: '#4060c8' }}>CP</div>
+                <div>
+                  <div className="social-name">Carlos Pinto</div>
+                  <div className="social-role">Dono · Café Veredas, BH</div>
+                </div>
+                <div className="social-stars">★★★★★</div>
+              </div>
+              <p className="social-q">
+                "Nunca soube que segunda era 30% mais fraca. O Cafo mostrou.
+                Criei uma promoção. Segunda virou meu segundo melhor dia da semana."
+              </p>
             </div>
           </div>
         </div>
@@ -220,14 +205,15 @@ export default function Home() {
         <div className="wrap">
           <div className="ai-layout">
             <div className="ai-copy reveal">
-              <span className="eyebrow">Inteligência artificial</span>
+              <span className="eyebrow">Para quem vive o café</span>
               <h2 className="s-h2">
-                Enquanto o café está sendo feito, os agentes de IA
-                analisam <em>finanças, operação e estoque.</em>
+                Você acorda cedo, trabalha até fechar.
+                A segunda-feira fraca <em>só aparece na conta do mês.</em>
               </h2>
               <p className="s-lead">
-                Baristas agora têm um sistema que fala a língua do café.
-                O dono recebe insights enquanto o caixa fecha.
+                A maioria dos donos toma decisão por instinto — e descobre
+                o problema tarde demais. O Cafo monitora o negócio em
+                tempo real e avisa antes que o problema apareça.
               </p>
 
               <div className="agents-grid">
@@ -235,7 +221,7 @@ export default function Home() {
                   <div className="agent-icon" aria-hidden="true">📊</div>
                   <div>
                     <div className="agent-name">Agente financeiro</div>
-                    <div className="agent-desc">Analisa faturamento, tendências e projeções em tempo real</div>
+                    <div className="agent-desc">"Hoje você faturou R$ 1.240. Sexta tende a ser 40% maior — você está preparado?"</div>
                   </div>
                   <div className="agent-status"><span className="status-dot"></span>Ativo</div>
                 </div>
@@ -243,7 +229,7 @@ export default function Home() {
                   <div className="agent-icon" aria-hidden="true">📦</div>
                   <div>
                     <div className="agent-name">Agente de estoque</div>
-                    <div className="agent-desc">Detecta ruptura iminente e sugere pedidos automáticos</div>
+                    <div className="agent-desc">"Seu café especial acaba em 3 dias. Quer que eu sugira o pedido agora?"</div>
                   </div>
                   <div className="agent-status"><span className="status-dot"></span>Ativo</div>
                 </div>
@@ -251,7 +237,7 @@ export default function Home() {
                   <div className="agent-icon" aria-hidden="true">👥</div>
                   <div>
                     <div className="agent-name">Agente de CRM</div>
-                    <div className="agent-desc">Identifica clientes em risco de churn antes de sumirem</div>
+                    <div className="agent-desc">"14 clientes não voltam há 3 semanas. Quer enviar uma mensagem pra eles?"</div>
                   </div>
                   <div className="agent-status"><span className="status-dot"></span>Ativo</div>
                 </div>
@@ -259,7 +245,7 @@ export default function Home() {
                   <div className="agent-icon" aria-hidden="true">⚡</div>
                   <div>
                     <div className="agent-name">Agente operacional</div>
-                    <div className="agent-desc">Otimiza horários, escala de baristas e picos de movimento</div>
+                    <div className="agent-desc">"Segunda às 8h tem 30% menos movimento. Uma promoção pontual pode mudar isso."</div>
                   </div>
                   <div className="agent-status"><span className="status-dot"></span>Ativo</div>
                 </div>
@@ -275,41 +261,61 @@ export default function Home() {
               </div>
               <div className="dp-stats">
                 <div className="dp-stat">
-                  <div className="dp-stat-lbl">Hoje</div>
-                  <div className="dp-stat-val">R$ 1.240</div>
-                  <div className="dp-stat-delta">↑ +8% vs ontem</div>
+                  <div className="dp-stat-lbl">{selectedDay === TODAY ? 'Hoje' : sel.label}</div>
+                  <div className="dp-stat-val">R$ {sel.revenue.toLocaleString('pt-BR')}</div>
+                  <div className="dp-stat-delta" style={{ color: sel.deltaColor }}>{sel.delta}</div>
                 </div>
                 <div className="dp-stat">
                   <div className="dp-stat-lbl">Clientes</div>
-                  <div className="dp-stat-val">38</div>
-                  <div className="dp-stat-delta">↑ 3 novos</div>
+                  <div className="dp-stat-val">{sel.clients}</div>
+                  <div className="dp-stat-delta" style={{ color: '#2d8a5a' }}>↑ {sel.novos} novos</div>
                 </div>
                 <div className="dp-stat">
                   <div className="dp-stat-lbl">Ticket médio</div>
-                  <div className="dp-stat-val">R$ 23,85</div>
-                  <div className="dp-stat-delta">↑ +12% semana</div>
+                  <div className="dp-stat-val">R$ {sel.avg}</div>
+                  <div className="dp-stat-delta" style={{ color: '#2d8a5a' }}>↑ +12% semana</div>
                 </div>
                 <div className="dp-stat">
                   <div className="dp-stat-lbl">Inativos</div>
-                  <div className="dp-stat-val">14</div>
+                  <div className="dp-stat-val">{sel.inactive}</div>
                   <div className="dp-stat-delta" style={{ color: '#e07050' }}>↓ reativar</div>
                 </div>
               </div>
               <div className="dp-chart">
                 <div className="dp-chart-lbl">Receita por dia</div>
-                <div className="dp-bars" role="img" aria-label="Gráfico de receita por dia da semana">
-                  <div className="dpb-w"><div className="dpb" style={{ height: '52%' }}></div><div className="dpbd">Seg</div></div>
-                  <div className="dpb-w"><div className="dpb" style={{ height: '68%' }}></div><div className="dpbd">Ter</div></div>
-                  <div className="dpb-w"><div className="dpb" style={{ height: '77%' }}></div><div className="dpbd">Qua</div></div>
-                  <div className="dpb-w"><div className="dpb" style={{ height: '72%' }}></div><div className="dpbd">Qui</div></div>
-                  <div className="dpb-w"><div className="dpb hi" style={{ height: '96%' }}></div><div className="dpbd">Sex</div></div>
-                  <div className="dpb-w"><div className="dpb" style={{ height: '60%' }}></div><div className="dpbd">Sáb</div></div>
-                  <div className="dpb-w"><div className="dpb" style={{ height: '36%' }}></div><div className="dpbd">Dom</div></div>
+                <div className="dp-bars" aria-label="Gráfico de receita por dia da semana">
+                  {weekData.map((d, i) => {
+                    const h = Math.max(6, Math.round((d.revenue / MAX_REVENUE) * 92));
+                    const isActive = selectedDay === i;
+                    const isMax = i === 4; // Sexta
+                    return (
+                      <div
+                        key={d.day}
+                        className={`dpb-w${isActive ? ' active' : ''}`}
+                        onClick={() => setSelectedDay(i)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`${d.label}: R$ ${d.revenue.toLocaleString('pt-BR')}`}
+                        onKeyDown={(e) => e.key === 'Enter' && setSelectedDay(i)}
+                      >
+                        <div
+                          className={`dpb${isMax && !isActive ? ' hi' : ''}`}
+                          style={{ height: `${h}px` }}
+                        >
+                          <span className="dpb-val">
+                            {d.revenue >= 1000
+                              ? `${(d.revenue / 1000).toFixed(1).replace('.0', '')}k`
+                              : d.revenue}
+                          </span>
+                        </div>
+                        <div className="dpbd">{d.day}</div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
               <div className="dp-insight">
-                <strong>Insight IA:</strong> Segunda-feira está 28% abaixo da média.
-                Uma promoção às 7h–9h pode gerar +R$ 1.200/mês.
+                <strong>Insight IA:</strong> {dayInsights[selectedDay]}
               </div>
             </div>
           </div>
@@ -387,16 +393,9 @@ export default function Home() {
       {/* FOOTER */}
       <footer>
         <div className="footer-row">
-          <a href="#" className="footer-logo">ca<b>fo</b></a>
-          <ul className="footer-links">
-            <li><a href="#">Produto</a></li>
-            <li><a href="#">Preços</a></li>
-            <li><a href="#">Balcão Podcast</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Privacidade</a></li>
-            <li><a href="#">Termos</a></li>
-          </ul>
-          <span className="footer-copy">© 2026 Cafo · São Paulo, Brasil</span>
+          <a href="#" className="footer-logo"><CafoLogo /></a>
+          <span className="footer-copy">© 2026 Cafo · Rio de Janeiro, Brasil</span>
+          <a href="/privacidade" className="footer-privacy">Política de Privacidade</a>
         </div>
       </footer>
     </>
