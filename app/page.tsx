@@ -284,9 +284,14 @@ export default function Home() {
                 <div className="pdv-client-ava">AL</div>
                 <div className="pdv-client-info">
                   <div className="pdv-client-name">Ana Lima <span className="pdv-client-badge">VIP</span></div>
-                  <div className="pdv-client-sub">3ª visita esta semana · Pedido usual: Cappuccino</div>
+                  <div className="pdv-client-meta">
+                    <span className="pdv-meta-item">📅 Última visita: ontem</span>
+                    <span className="pdv-meta-sep">·</span>
+                    <span className="pdv-meta-item pdv-meta-alert">⚠ Intolerante a lactose</span>
+                    <span className="pdv-meta-sep">·</span>
+                    <span className="pdv-meta-item">☕ Usual: Cappuccino s/ leite</span>
+                  </div>
                 </div>
-                <div className="pdv-client-pts">180 pts</div>
               </div>
               <div className="pdv-grid">
                 {[
