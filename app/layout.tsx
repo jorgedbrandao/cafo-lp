@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     "fidelização de clientes",
     "gestão de café",
   ],
-  authors: [{ name: "Cafo", url: "https://cafo.com.br" }],
+  authors: [{ name: "Cafo", url: "https://cafo-lp.vercel.app" }],
   creator: "Cafo",
-  metadataBase: new URL("https://cafo.com.br"),
+  metadataBase: new URL("https://cafo-lp.vercel.app"),
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://cafo.com.br",
+    url: "https://cafo-lp.vercel.app",
     siteName: "Cafo",
     title: "Cafo — A plataforma para gestão de cafeterias",
     description:
