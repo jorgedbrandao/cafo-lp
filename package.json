@@ -1,0 +1,12 @@
+{
+  "name": "cafo-landing-page",
+  "version": "1.0.0",
+  "description": "Cafo - A plataforma para gestão de cafeterias",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
