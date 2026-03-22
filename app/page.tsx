@@ -27,34 +27,32 @@ const dayInsights = [
 const MAX_REVENUE = Math.max(...weekData.map(d => d.revenue));
 const TODAY = 5;
 
-const aiInsights = [
-  { icon: '📊', agent: 'Agente financeiro', msg: 'Hoje você faturou R$ 1.240. Sexta tende a ser 40% maior — você está preparado?' },
-  { icon: '📦', agent: 'Agente de estoque', msg: 'Seu café especial acaba em 3 dias. Quer que eu sugira o pedido agora?' },
-  { icon: '👥', agent: 'Agente de CRM', msg: '14 clientes não voltam há 3 semanas. Quer enviar uma mensagem pra eles?' },
-  { icon: '⚡', agent: 'Agente operacional', msg: 'Segunda às 8h tem 30% menos movimento. Uma promoção pontual pode mudar isso.' },
-  { icon: '📊', agent: 'Agente financeiro', msg: 'Ticket médio subiu R$ 4,20 essa semana. O combo de tarde está funcionando.' },
-  { icon: '👥', agent: 'Agente de CRM', msg: '3 clientes VIP fazem aniversário esta semana. Que tal uma mensagem especial?' },
-  { icon: '📦', agent: 'Agente de estoque', msg: 'Leite integral consumido 18% acima da média. Revise o pedido de quinta.' },
+const chatConvos = [
+  { user: 'Como foi a semana?',         ai: 'Ticket médio subiu R$ 4,20. Sexta foi recorde — R$ 2.080 em vendas.' },
+  { user: 'Tem algum alerta hoje?',      ai: 'Seu café especial acaba em 3 dias. Posso sugerir o pedido agora?' },
+  { user: 'Como estão meus clientes?',  ai: '14 clientes não voltam há 3 semanas. Quer enviar uma mensagem pra eles?' },
+  { user: 'Segunda sempre fraca?',      ai: 'Sim, −28% vs média. Uma promoção às 7h–9h pode gerar +R$ 1.200/mês.' },
+  { user: 'Quem faz aniversário?',      ai: '3 clientes VIP esta semana. Posso preparar uma mensagem especial para cada um.' },
 ];
 
 export default function Home() {
   const [selectedDay, setSelectedDay] = useState(TODAY);
   const [modalOpen, setModalOpen] = useState(false);
-  const [aiIdx, setAiIdx] = useState(0);
-  const [aiFading, setAiFading] = useState(false);
+  const [chatIdx, setChatIdx] = useState(0);
+  const [chatStep, setChatStep] = useState(0); // 0=empty 1=user 2=typing 3=ai
   const sel = weekData[selectedDay];
   const openModal = (e: React.MouseEvent) => { e.preventDefault(); setModalOpen(true); };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setAiFading(true);
-      setTimeout(() => {
-        setAiIdx(i => (i + 1) % aiInsights.length);
-        setAiFading(false);
-      }, 350);
-    }, 3200);
-    return () => clearInterval(timer);
-  }, []);
+    const t1 = setTimeout(() => setChatStep(1), 400);
+    const t2 = setTimeout(() => setChatStep(2), 1800);
+    const t3 = setTimeout(() => setChatStep(3), 3000);
+    const t4 = setTimeout(() => {
+      setChatStep(0);
+      setChatIdx(i => (i + 1) % chatConvos.length);
+    }, 5500);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(t4); };
+  }, [chatIdx]);
 
   return (
     <>
@@ -244,48 +242,33 @@ export default function Home() {
                 tempo real e avisa antes que o problema apareça.
               </p>
 
-              <div className="agents-grid">
-                <div className="agent-row">
-                  <div className="agent-icon" aria-hidden="true">📊</div>
-                  <div>
-                    <div className="agent-name">Agente financeiro</div>
-                    <div className="agent-desc">"Hoje você faturou R$ 1.240. Sexta tende a ser 40% maior — você está preparado?"</div>
-                  </div>
+              <div className="ai-chat-card">
+                <div className="ai-chat-header">
+                  <span className="status-dot"></span>
+                  <span className="ai-chat-name">CafoAI</span>
+                  <span className="ai-chat-status">online</span>
                 </div>
-                <div className="agent-row">
-                  <div className="agent-icon" aria-hidden="true">📦</div>
-                  <div>
-                    <div className="agent-name">Agente de estoque</div>
-                    <div className="agent-desc">"Seu café especial acaba em 3 dias. Quer que eu sugira o pedido agora?"</div>
-                  </div>
+                <div className="ai-chat-body">
+                  {chatStep >= 1 && (
+                    <div className="chat-msg user">
+                      <span>{chatConvos[chatIdx].user}</span>
+                    </div>
+                  )}
+                  {chatStep === 2 && (
+                    <div className="chat-msg ai typing">
+                      <span className="typing-dot" /><span className="typing-dot" /><span className="typing-dot" />
+                    </div>
+                  )}
+                  {chatStep >= 3 && (
+                    <div className="chat-msg ai">
+                      <span>{chatConvos[chatIdx].ai}</span>
+                    </div>
+                  )}
                 </div>
-                <div className="agent-row">
-                  <div className="agent-icon" aria-hidden="true">👥</div>
-                  <div>
-                    <div className="agent-name">Agente de CRM</div>
-                    <div className="agent-desc">"14 clientes não voltam há 3 semanas. Quer enviar uma mensagem pra eles?"</div>
-                  </div>
-                </div>
-                <div className="agent-row">
-                  <div className="agent-icon" aria-hidden="true">⚡</div>
-                  <div>
-                    <div className="agent-name">Agente operacional</div>
-                    <div className="agent-desc">"Segunda às 8h tem 30% menos movimento. Uma promoção pontual pode mudar isso."</div>
-                  </div>
-                </div>
-
-                <div className={`ai-insight-card${aiFading ? ' fading' : ''}`}>
-                  <div className="ai-insight-header">
-                    <span className="ai-insight-dot"><span className="status-dot"></span></span>
-                    <span className="ai-insight-label">CafoAI</span>
-                    <span className="ai-insight-agent">{aiInsights[aiIdx].icon} {aiInsights[aiIdx].agent}</span>
-                  </div>
-                  <p className="ai-insight-msg">"{aiInsights[aiIdx].msg}"</p>
-                  <div className="ai-insight-dots">
-                    {aiInsights.map((_, i) => (
-                      <span key={i} className={`ai-dot${i === aiIdx ? ' active' : ''}`} />
-                    ))}
-                  </div>
+                <div className="ai-chat-dots">
+                  {chatConvos.map((_, i) => (
+                    <span key={i} className={`ai-dot${i === chatIdx ? ' active' : ''}`} />
+                  ))}
                 </div>
               </div>
             </div>
