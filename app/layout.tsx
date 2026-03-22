@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "Do PDV ao CRM, com IA que monitora seu negócio em tempo real. Conheça seus clientes, aumente o faturamento e tome decisões com dados.",
     images: [
       {
-        url: "/thumbnail-site.png",
+        url: "https://cafo-lp.vercel.app/thumbnail-site.png",
         width: 1200,
         height: 630,
         alt: "Cafo — Plataforma para gestão de cafeterias",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Cafo — A plataforma para gestão de cafeterias",
     description:
       "Do PDV ao CRM, com IA que monitora seu negócio em tempo real. Conheça seus clientes, aumente o faturamento e tome decisões com dados.",
-    images: ["/thumbnail-site.png"],
+    images: ["https://cafo-lp.vercel.app/thumbnail-site.png"],
   },
   robots: {
     index: true,
