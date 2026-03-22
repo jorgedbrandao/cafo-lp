@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CafoLogo from './CafoLogo';
 import WaitlistModal from './WaitlistModal';
 
@@ -27,11 +27,34 @@ const dayInsights = [
 const MAX_REVENUE = Math.max(...weekData.map(d => d.revenue));
 const TODAY = 5;
 
+const aiInsights = [
+  { icon: '📊', agent: 'Agente financeiro', msg: 'Hoje você faturou R$ 1.240. Sexta tende a ser 40% maior — você está preparado?' },
+  { icon: '📦', agent: 'Agente de estoque', msg: 'Seu café especial acaba em 3 dias. Quer que eu sugira o pedido agora?' },
+  { icon: '👥', agent: 'Agente de CRM', msg: '14 clientes não voltam há 3 semanas. Quer enviar uma mensagem pra eles?' },
+  { icon: '⚡', agent: 'Agente operacional', msg: 'Segunda às 8h tem 30% menos movimento. Uma promoção pontual pode mudar isso.' },
+  { icon: '📊', agent: 'Agente financeiro', msg: 'Ticket médio subiu R$ 4,20 essa semana. O combo de tarde está funcionando.' },
+  { icon: '👥', agent: 'Agente de CRM', msg: '3 clientes VIP fazem aniversário esta semana. Que tal uma mensagem especial?' },
+  { icon: '📦', agent: 'Agente de estoque', msg: 'Leite integral consumido 18% acima da média. Revise o pedido de quinta.' },
+];
+
 export default function Home() {
   const [selectedDay, setSelectedDay] = useState(TODAY);
   const [modalOpen, setModalOpen] = useState(false);
+  const [aiIdx, setAiIdx] = useState(0);
+  const [aiFading, setAiFading] = useState(false);
   const sel = weekData[selectedDay];
   const openModal = (e: React.MouseEvent) => { e.preventDefault(); setModalOpen(true); };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setAiFading(true);
+      setTimeout(() => {
+        setAiIdx(i => (i + 1) % aiInsights.length);
+        setAiFading(false);
+      }, 350);
+    }, 3200);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -228,7 +251,6 @@ export default function Home() {
                     <div className="agent-name">Agente financeiro</div>
                     <div className="agent-desc">"Hoje você faturou R$ 1.240. Sexta tende a ser 40% maior — você está preparado?"</div>
                   </div>
-                  <div className="agent-status"><span className="status-dot"></span>Ativo</div>
                 </div>
                 <div className="agent-row">
                   <div className="agent-icon" aria-hidden="true">📦</div>
@@ -236,7 +258,6 @@ export default function Home() {
                     <div className="agent-name">Agente de estoque</div>
                     <div className="agent-desc">"Seu café especial acaba em 3 dias. Quer que eu sugira o pedido agora?"</div>
                   </div>
-                  <div className="agent-status"><span className="status-dot"></span>Ativo</div>
                 </div>
                 <div className="agent-row">
                   <div className="agent-icon" aria-hidden="true">👥</div>
@@ -244,7 +265,6 @@ export default function Home() {
                     <div className="agent-name">Agente de CRM</div>
                     <div className="agent-desc">"14 clientes não voltam há 3 semanas. Quer enviar uma mensagem pra eles?"</div>
                   </div>
-                  <div className="agent-status"><span className="status-dot"></span>Ativo</div>
                 </div>
                 <div className="agent-row">
                   <div className="agent-icon" aria-hidden="true">⚡</div>
@@ -252,7 +272,20 @@ export default function Home() {
                     <div className="agent-name">Agente operacional</div>
                     <div className="agent-desc">"Segunda às 8h tem 30% menos movimento. Uma promoção pontual pode mudar isso."</div>
                   </div>
-                  <div className="agent-status"><span className="status-dot"></span>Ativo</div>
+                </div>
+
+                <div className={`ai-insight-card${aiFading ? ' fading' : ''}`}>
+                  <div className="ai-insight-header">
+                    <span className="ai-insight-dot"><span className="status-dot"></span></span>
+                    <span className="ai-insight-label">CafoAI</span>
+                    <span className="ai-insight-agent">{aiInsights[aiIdx].icon} {aiInsights[aiIdx].agent}</span>
+                  </div>
+                  <p className="ai-insight-msg">"{aiInsights[aiIdx].msg}"</p>
+                  <div className="ai-insight-dots">
+                    {aiInsights.map((_, i) => (
+                      <span key={i} className={`ai-dot${i === aiIdx ? ' active' : ''}`} />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
