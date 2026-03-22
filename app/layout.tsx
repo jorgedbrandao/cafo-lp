@@ -56,13 +56,6 @@ export const metadata: Metadata = {
       "Do PDV ao CRM, com IA que monitora seu negócio em tempo real. Conheça seus clientes, aumente o faturamento e tome decisões com dados.",
     images: ["/thumbnail-site.png"],
   },
-  icons: {
-    icon: [
-      { url: "/fav-icon.svg", type: "image/svg+xml" },
-    ],
-    shortcut: "/fav-icon.svg",
-    apple: "/fav-icon.svg",
-  },
   robots: {
     index: true,
     follow: true,
