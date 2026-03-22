@@ -289,7 +289,7 @@ export default function Home() {
                     <span className="pdv-meta-sep">·</span>
                     <span className="pdv-meta-item pdv-meta-alert">⚠ Intolerante a lactose</span>
                     <span className="pdv-meta-sep">·</span>
-                    <span className="pdv-meta-item">☕ Usual: Cappuccino s/ leite</span>
+                    <span className="pdv-meta-item">☕ Usual: Coado V60 s/ leite</span>
                   </div>
                 </div>
               </div>
