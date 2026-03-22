@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafo — A plataforma para gestão de cafeterias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">ca<b>fo</b></a>
+
+  <ul class="nav-links">
+    <li><a href="#produto">Produto</a></li>
+    <li><a href="#ia">IA & Agentes</a></li>
+    <li><a href="#preco">Preços</a></li>
+    <li><a href="#podcast">Podcast</a></li>
+  </ul>
+
+  <div class="nav-ctas">
+    <a href="#" class="btn btn-ghost">Entrar</a>
+    <a href="#preco" class="btn btn-solid">Começar grátis</a>
+    <button
+      id="hamburger"
+      class="nav-hamburger"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div id="mobile-menu" class="mobile-menu" role="dialog" aria-label="Menu de navegação">
+  <ul>
+    <li><a href="#produto">Produto</a></li>
+    <li><a href="#ia">IA & Agentes</a></li>
+    <li><a href="#preco">Preços</a></li>
+    <li><a href="#podcast">Podcast</a></li>
+  </ul>
+  <div class="mobile-menu-ctas">
+    <a href="#" class="btn btn-ghost btn-lg">Entrar</a>
+    <a href="#preco" class="btn btn-solid btn-lg">Começar grátis</a>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-circle"></div>
+
+  <div class="hero-eyebrow">Plataforma para cafeterias</div>
+
+  <h1>
+    A plataforma para gestão<br>
+    de cafeterias, do <em>barista</em><br>
+    ao <em>dono.</em>
+  </h1>
+
+  <p class="hero-sub">
+    Finalmente — a tecnologia que faltava no mundo do café.
+    Uma plataforma integrada do barista à gestão, com IA, CRM
+    e crescimento para o negócio em café.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#preco" class="btn btn-solid btn-lg">Começar grátis →</a>
+    <a href="#produto" class="btn btn-ghost btn-lg">Ver o produto</a>
+  </div>
+
+  <p class="hero-footnote">Sem cartão de crédito · Setup em 10 minutos · Suporte em português</p>
+
+  <div class="stats-bar reveal">
+    <div class="stat-item">
+      <div class="stat-val">20+</div>
+      <div class="stat-lbl">Cafeterias ativas</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">8.500+</div>
+      <div class="stat-lbl">Pedidos processados</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">&lt;&nbsp;60s</div>
+      <div class="stat-lbl">Por pedido</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">13×</div>
+      <div class="stat-lbl">ROI médio</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section id="produto" class="feat-section">
+  <div class="wrap">
+    <div class="feat-header reveal">
+      <span class="eyebrow">Do pedido ao relacionamento</span>
+      <h2 class="s-h2">
+        Cafo traz para o mundo do café<br>
+        inteligência artificial, <em>CRM</em><br>
+        e crescimento para o negócio.
+      </h2>
+    </div>
+
+    <div class="feat-cards reveal">
+      <div class="feat-card">
+        <div class="feat-num">01</div>
+        <div class="feat-card-title">Barista registra o pedido</div>
+        <div class="feat-card-body">
+          PDV rápido com botões grandes, modificadores na primeira tela.
+          Do pedido ao pagamento em menos de 60 segundos — mesmo no pico das 9h.
+          Funciona offline.
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">02</div>
+        <div class="feat-card-title">Conheça seu cliente</div>
+        <div class="feat-card-body">
+          Nome, bebida preferida, frequência, histórico e notas pessoais — salvos
+          automaticamente. O barista novo chega e já sabe quem é o João.
+          O cliente se sente em casa.
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">03</div>
+        <div class="feat-card-title">CRM em 1 clique</div>
+        <div class="feat-card-body">
+          Cliente sumiu há 3 semanas? Um toque envia mensagem via WhatsApp,
+          personalizada. Segmentação automática: VIPs, inativos, aniversariantes,
+          novos.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BARISTA / STORYTELLING ── -->
+<section class="barista-section">
+  <div class="wrap">
+    <div class="barista-layout">
+
+      <div class="barista-copy reveal">
+        <span class="eyebrow">Comunidade</span>
+        <h2 class="s-h2">Do balcão, conheça<br>quem faz o <em>café.</em></h2>
+        <p class="s-lead">
+          Baristas agora têm um sistema que fala a língua do café.
+          Feito por quem entende o que acontece atrás do balcão.
+        </p>
+
+        <div class="social-cards">
+          <div class="social-card">
+            <div class="social-top">
+              <div class="social-ava" style="background:#FFF0EB;color:#FB4D00">LM</div>
+              <div>
+                <div class="social-name">Lucas Mendes</div>
+                <div class="social-role">Head Barista · Café Origem, SP</div>
+              </div>
+              <div class="social-stars">★★★★★</div>
+            </div>
+            <p class="social-q">
+              "Primeiro dia usando, minha cliente chegou e o sistema já mostrou o pedido dela.
+              Ela perguntou como eu sabia. Disse que o café lembrava dela."
+            </p>
+          </div>
+
+          <div class="social-card">
+            <div class="social-top">
+              <div class="social-ava" style="background:#EDFAF3;color:#2d8a5a">AR</div>
+              <div>
+                <div class="social-name">Amanda Ramos</div>
+                <div class="social-role">Dona · A Bela Cafeteria, RJ</div>
+              </div>
+              <div class="social-stars">★★★★★</div>
+            </div>
+            <p class="social-q">
+              "Mandei mensagem pra 22 inativos. Em uma semana, 7 voltaram.
+              Pagou a assinatura inteira e ainda me deu dado sobre o que estava errado."
+            </p>
+          </div>
+
+          <div class="social-card">
+            <div class="social-top">
+              <div class="social-ava" style="background:#EEF3FF;color:#4060c8">CP</div>
+              <div>
+                <div class="social-name">Carlos Pinto</div>
+                <div class="social-role">Dono · Café Veredas, BH</div>
+              </div>
+              <div class="social-stars">★★★★★</div>
+            </div>
+            <p class="social-q">
+              "Nunca soube que segunda era 30% mais fraca. O Cafo mostrou.
+              Criei uma promoção. Segunda virou meu segundo melhor dia da semana."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="video-frame">
+          <div class="video-bg-text">Onde o café<br>te conhece.</div>
+          <div class="play-btn" role="button" aria-label="Assistir vídeo">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="video-label">
+            <div class="video-label-title">Um dia atrás do balcão</div>
+            <div class="video-label-sub">Balcão por Cafo · EP 01 · 4 min</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── AI SECTION ── -->
+<section id="ia" class="ai-section">
+  <div class="wrap">
+    <div class="ai-layout">
+
+      <div class="ai-copy reveal">
+        <span class="eyebrow">Inteligência artificial</span>
+        <h2 class="s-h2">
+          Enquanto o café está sendo feito, os agentes de IA
+          analisam <em>finanças, operação e estoque.</em>
+        </h2>
+        <p class="s-lead">
+          Baristas agora têm um sistema que fala a língua do café.
+          O dono recebe insights enquanto o caixa fecha.
+        </p>
+
+        <div class="agents-grid">
+          <div class="agent-row">
+            <div class="agent-icon" aria-hidden="true">📊</div>
+            <div>
+              <div class="agent-name">Agente financeiro</div>
+              <div class="agent-desc">Analisa faturamento, tendências e projeções em tempo real</div>
+            </div>
+            <div class="agent-status"><span class="status-dot"></span>Ativo</div>
+          </div>
+          <div class="agent-row">
+            <div class="agent-icon" aria-hidden="true">📦</div>
+            <div>
+              <div class="agent-name">Agente de estoque</div>
+              <div class="agent-desc">Detecta ruptura iminente e sugere pedidos automáticos</div>
+            </div>
+            <div class="agent-status"><span class="status-dot"></span>Ativo</div>
+          </div>
+          <div class="agent-row">
+            <div class="agent-icon" aria-hidden="true">👥</div>
+            <div>
+              <div class="agent-name">Agente de CRM</div>
+              <div class="agent-desc">Identifica clientes em risco de churn antes de sumirem</div>
+            </div>
+            <div class="agent-status"><span class="status-dot"></span>Ativo</div>
+          </div>
+          <div class="agent-row">
+            <div class="agent-icon" aria-hidden="true">⚡</div>
+            <div>
+              <div class="agent-name">Agente operacional</div>
+              <div class="agent-desc">Otimiza horários, escala de baristas e picos de movimento</div>
+            </div>
+            <div class="agent-status"><span class="status-dot"></span>Ativo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-preview reveal" style="transition-delay:.12s">
+        <div class="dp-bar">
+          <div class="dp-dot dd1"></div>
+          <div class="dp-dot dd2"></div>
+          <div class="dp-dot dd3"></div>
+          <span class="dp-title">Cafo — Painel IA</span>
+        </div>
+        <div class="dp-stats">
+          <div class="dp-stat">
+            <div class="dp-stat-lbl">Hoje</div>
+            <div class="dp-stat-val">R$&nbsp;1.240</div>
+            <div class="dp-stat-delta">↑ +8% vs ontem</div>
+          </div>
+          <div class="dp-stat">
+            <div class="dp-stat-lbl">Clientes</div>
+            <div class="dp-stat-val">38</div>
+            <div class="dp-stat-delta">↑ 3 novos</div>
+          </div>
+          <div class="dp-stat">
+            <div class="dp-stat-lbl">Ticket médio</div>
+            <div class="dp-stat-val">R$&nbsp;23,85</div>
+            <div class="dp-stat-delta">↑ +12% semana</div>
+          </div>
+          <div class="dp-stat">
+            <div class="dp-stat-lbl">Inativos</div>
+            <div class="dp-stat-val">14</div>
+            <div class="dp-stat-delta" style="color:#e07050">↓ reativar</div>
+          </div>
+        </div>
+        <div class="dp-chart">
+          <div class="dp-chart-lbl">Receita por dia</div>
+          <div class="dp-bars" role="img" aria-label="Gráfico de receita por dia da semana">
+            <div class="dpb-w"><div class="dpb" style="height:52%"></div><div class="dpbd">Seg</div></div>
+            <div class="dpb-w"><div class="dpb" style="height:68%"></div><div class="dpbd">Ter</div></div>
+            <div class="dpb-w"><div class="dpb" style="height:77%"></div><div class="dpbd">Qua</div></div>
+            <div class="dpb-w"><div class="dpb" style="height:72%"></div><div class="dpbd">Qui</div></div>
+            <div class="dpb-w"><div class="dpb hi" style="height:96%"></div><div class="dpbd">Sex</div></div>
+            <div class="dpb-w"><div class="dpb" style="height:60%"></div><div class="dpbd">Sáb</div></div>
+            <div class="dpb-w"><div class="dpb" style="height:36%"></div><div class="dpbd">Dom</div></div>
+          </div>
+        </div>
+        <div class="dp-insight">
+          <strong>Insight IA:</strong> Segunda-feira está 28% abaixo da média.
+          Uma promoção às 7h–9h pode gerar +R$&nbsp;1.200/mês.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section id="preco" class="pricing-section">
+  <div class="wrap">
+    <div class="pricing-header reveal">
+      <span class="eyebrow">Preços</span>
+      <h2 class="s-h2">Simples como o café<br><em>que você faz.</em></h2>
+      <p class="s-lead">Começa grátis. Escala quando crescer. Sem contrato, sem surpresa.</p>
+    </div>
+
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <div class="price-plan">Para começar</div>
+        <div class="price-name">Beta</div>
+        <p class="price-tagline">
+          PDV completo + dashboards financeiros. Tudo que você precisa para
+          sair do papel e do caderno.
+        </p>
+        <ul class="price-features">
+          <li>PDV completo (até 2 terminais)</li>
+          <li>Perfil de cliente ilimitado</li>
+          <li>Dashboard financeiro</li>
+          <li>WhatsApp CRM básico</li>
+          <li>Modo offline automático</li>
+          <li>Suporte via chat</li>
+        </ul>
+        <a href="#" class="price-cta cta-outline">Comece grátis</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-card-badge">Recomendado</div>
+        <div class="price-plan">Para crescer</div>
+        <div class="price-name">Business</div>
+        <p class="price-tagline">
+          IA integrada + consultoria de 1h com especialista em cafeterias.
+          Para o dono que quer mais do que um PDV.
+        </p>
+        <ul class="price-features">
+          <li>Tudo do plano Beta</li>
+          <li>Agentes de IA (financeiro, estoque, CRM)</li>
+          <li>CRM ilimitado + segmentação avançada</li>
+          <li>Relatórios semanais automáticos</li>
+          <li>Consultoria de 1h com especialista</li>
+          <li>Suporte prioritário + onboarding dedicado</li>
+        </ul>
+        <a href="#" class="price-cta cta-fill">Quero uma demonstração →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="final-section">
+  <span class="eyebrow reveal">Comece hoje</span>
+  <h2 class="s-h2 reveal">Onde o café<br><em>te conhece.</em></h2>
+  <p class="final-sub reveal" style="transition-delay:.08s">Grátis pra começar. Feito pra ficar.</p>
+  <div class="final-ctas reveal" style="transition-delay:.14s">
+    <a href="#" class="btn btn-white btn-lg">Criar conta grátis</a>
+    <a href="#" class="btn btn-outline-white btn-lg">Quero uma demonstração</a>
+  </div>
+  <div class="final-note reveal" style="transition-delay:.2s">
+    <span>Sem cartão de crédito</span>
+    <span class="final-note-sep">·</span>
+    <span>14 dias de trial completo</span>
+    <span class="final-note-sep">·</span>
+    <span>Cancela quando quiser</span>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-row">
+    <a href="#" class="footer-logo">ca<b>fo</b></a>
+    <ul class="footer-links">
+      <li><a href="#">Produto</a></li>
+      <li><a href="#">Preços</a></li>
+      <li><a href="#">Balcão Podcast</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Privacidade</a></li>
+      <li><a href="#">Termos</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Cafo · São Paulo, Brasil</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
