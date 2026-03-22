@@ -17,6 +17,7 @@ export async function POST(req: NextRequest) {
     name: nome,
     phone: whatsapp,
     job_title: role,
+    'custom.cargo': role,
     'custom.desafios': challenges.join(', '),
     'custom.origem': 'cafo-landing-page',
   };
