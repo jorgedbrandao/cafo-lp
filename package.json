@@ -1,12 +1,22 @@
 {
-  "name": "cafo-landing-page",
-  "version": "1.0.0",
-  "description": "Cafo - A plataforma para gestão de cafeterias",
+  "name": "cafo-landing",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "npx serve .",
-    "start": "npx serve ."
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "serve": "^14.2.4"
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
   }
 }
