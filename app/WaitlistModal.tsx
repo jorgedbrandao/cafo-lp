@@ -28,6 +28,8 @@ export default function WaitlistModal({ open, onClose }: Props) {
   const [role, setRole] = useState('');
   const [challenges, setChallenges] = useState<string[]>([]);
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const firstInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -68,9 +70,26 @@ export default function WaitlistModal({ open, onClose }: Props) {
     return role !== '' && challenges.length > 0;
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!step2Valid()) return;
-    setDone(true);
+    setLoading(true);
+    setSubmitError('');
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, email, whatsapp, role, challenges }),
+      });
+      if (!res.ok) {
+        const d = await res.json();
+        throw new Error(d.error ?? 'Erro ao enviar.');
+      }
+      setDone(true);
+    } catch (err: unknown) {
+      setSubmitError(err instanceof Error ? err.message : 'Erro ao enviar. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (!open) return null;
@@ -188,14 +207,16 @@ export default function WaitlistModal({ open, onClose }: Props) {
                   </div>
                 </div>
 
+                {submitError && <p className="wl-error">{submitError}</p>}
+
                 <div className="wl-actions">
                   <button className="wl-back" onClick={() => setStep(1)}>← Voltar</button>
                   <button
                     className="wl-btn"
-                    disabled={!step2Valid()}
+                    disabled={!step2Valid() || loading}
                     onClick={handleSubmit}
                   >
-                    Garantir minha vaga
+                    {loading ? 'Enviando…' : 'Garantir minha vaga'}
                   </button>
                 </div>
               </div>

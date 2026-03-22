@@ -30,8 +30,8 @@ html::before {
     linear-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 100% 90% at 50% 20%, black 20%, transparent 85%);
-  -webkit-mask-image: radial-gradient(ellipse 100% 90% at 50% 20%, black 20%, transparent 85%);
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 45%, black 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 45%, black 100%);
 }
 
 /* Grain overlay */
@@ -2002,6 +2002,16 @@ footer {
 }
 
 .wl-done .wl-btn { margin-top: 24px; }
+
+.wl-error {
+  font-size: 0.875rem;
+  color: #c0392b;
+  background: #fdf0ef;
+  border: 1px solid #f5c6c2;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 4px;
+}
 
 /* Mobile */
 @media (max-width: 560px) {
