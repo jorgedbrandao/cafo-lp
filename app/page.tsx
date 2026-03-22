@@ -230,7 +230,7 @@ export default function Home() {
       <section id="ia" className="ai-section">
         <div className="wrap">
           <div className="ai-layout">
-            <div className="ai-copy reveal">
+            <div className="ai-copy reveal" style={{ width: '100%', maxWidth: 720 }}>
               <span className="eyebrow">Para quem vive o café</span>
               <h2 className="s-h2">
                 Você acorda cedo, trabalha até fechar.
@@ -246,7 +246,6 @@ export default function Home() {
                 <div className="ai-chat-header">
                   <span className="status-dot"></span>
                   <span className="ai-chat-name">CafoAI</span>
-                  <span className="ai-chat-status">online</span>
                 </div>
                 <div className="ai-chat-body">
                   {chatStep >= 1 && (
@@ -273,7 +272,50 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="dash-preview reveal" style={{ transitionDelay: '.12s' }}>
+            {/* PDV MOCKUP */}
+            <div className="pdv-preview reveal" style={{ width: '100%', maxWidth: 720 }}>
+              <div className="dp-bar">
+                <div className="dp-dot dd1"></div>
+                <div className="dp-dot dd2"></div>
+                <div className="dp-dot dd3"></div>
+                <span className="dp-title">Cafo — PDV</span>
+              </div>
+              <div className="pdv-client-bar">
+                <div className="pdv-client-ava">AL</div>
+                <div className="pdv-client-info">
+                  <div className="pdv-client-name">Ana Lima <span className="pdv-client-badge">VIP</span></div>
+                  <div className="pdv-client-sub">3ª visita esta semana · Pedido usual: Cappuccino</div>
+                </div>
+                <div className="pdv-client-pts">180 pts</div>
+              </div>
+              <div className="pdv-grid">
+                {[
+                  { name: 'Espresso',   price: '7,00',  sel: false },
+                  { name: 'Cappuccino', price: '9,50',  sel: true  },
+                  { name: 'Flat White', price: '10,00', sel: false },
+                  { name: 'Latte',      price: '9,00',  sel: false },
+                  { name: 'Americano',  price: '7,50',  sel: false },
+                  { name: 'Cold Brew',  price: '12,00', sel: false },
+                ].map(item => (
+                  <div key={item.name} className={`pdv-item${item.sel ? ' sel' : ''}`}>
+                    <div className="pdv-item-name">{item.name}</div>
+                    <div className="pdv-item-price">R$ {item.price}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="pdv-cart">
+                <div className="pdv-cart-row">
+                  <span>Cappuccino × 1</span>
+                  <span>R$ 9,50</span>
+                </div>
+                <div className="pdv-cart-footer">
+                  <span className="pdv-cart-total">Total <strong>R$ 9,50</strong></span>
+                  <button className="pdv-cart-btn">Finalizar pedido</button>
+                </div>
+              </div>
+            </div>
+
+            <div className="dash-preview reveal" style={{ width: '100%', maxWidth: 720, transitionDelay: '.12s' }}>
               <div className="dp-bar">
                 <div className="dp-dot dd1"></div>
                 <div className="dp-dot dd2"></div>
