@@ -396,7 +396,7 @@ section {
 }
 
 .hero h1 em {
-  color: #fb8c5a;
+  color: #fff;
   font-style: italic;
 }
 
@@ -992,10 +992,13 @@ section {
 }
 
 .price-cta {
-  width: 100%;
-  padding: 16px;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 16px 32px;
   font-size: 1rem;
   border-radius: 6px;
+  text-align: center;
 }
 
 /* Final Section */

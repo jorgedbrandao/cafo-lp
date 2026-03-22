@@ -399,7 +399,7 @@ export default function Home() {
       <footer>
         <div className="footer-row">
           <a href="#" className="footer-logo"><CafoLogo /></a>
-          <span className="footer-copy">© 2026 Cafo · Rio de Janeiro, Brasil</span>
+          <span className="footer-copy">© 2026 Cafo · Rio de Janeiro, Brasil · Todos os direitos reservados</span>
           <a href="/privacidade" className="footer-privacy">Política de Privacidade</a>
         </div>
       </footer>
