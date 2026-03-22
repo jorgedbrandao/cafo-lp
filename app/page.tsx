@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import CafoLogo from './CafoLogo';
+import WaitlistModal from './WaitlistModal';
 
 const weekData = [
   { day: 'Seg', label: 'Segunda', revenue: 890,  clients: 27, avg: '32,96', inactive: 8,  novos: 1, delta: '−28% vs média', deltaColor: '#e07050' },
@@ -28,16 +29,20 @@ const TODAY = 5;
 
 export default function Home() {
   const [selectedDay, setSelectedDay] = useState(TODAY);
+  const [modalOpen, setModalOpen] = useState(false);
   const sel = weekData[selectedDay];
+  const openModal = (e: React.MouseEvent) => { e.preventDefault(); setModalOpen(true); };
 
   return (
     <>
+      <WaitlistModal open={modalOpen} onClose={() => setModalOpen(false)} />
+
       {/* HERO WRAPPER — nav flutuante sobre a imagem */}
       <div className="hero-wrap">
         <nav className="nav-container">
           <a href="#" className="nav-logo"><CafoLogo /></a>
           <div className="nav-ctas">
-            <a href="#preco" className="btn btn-solid">Começar grátis</a>
+            <a href="#" onClick={openModal} className="btn btn-solid">Começar grátis</a>
           </div>
         </nav>
 
@@ -57,7 +62,7 @@ export default function Home() {
           </p>
 
           <div className="hero-ctas">
-            <a href="#preco" className="btn btn-solid btn-lg">Começar grátis →</a>
+            <a href="#" onClick={openModal} className="btn btn-solid btn-lg">Começar grátis →</a>
             <a href="#produto" className="btn btn-outline-white btn-lg">Ver o produto</a>
           </div>
 
@@ -347,7 +352,7 @@ export default function Home() {
                 <li>Modo offline automático</li>
                 <li>Suporte via chat</li>
               </ul>
-              <a href="#" className="price-cta cta-outline">Comece grátis</a>
+              <a href="#" onClick={openModal} className="price-cta cta-outline">Comece grátis</a>
             </div>
 
             <div className="price-card featured">
@@ -366,7 +371,7 @@ export default function Home() {
                 <li>Consultoria de 1h com especialista</li>
                 <li>Suporte prioritário + onboarding dedicado</li>
               </ul>
-              <a href="#" className="price-cta cta-fill">Quero uma demonstração →</a>
+              <a href="#" onClick={openModal} className="price-cta cta-fill">Quero uma demonstração →</a>
             </div>
           </div>
         </div>
@@ -378,8 +383,8 @@ export default function Home() {
         <h2 className="s-h2 reveal">Onde o café<br /><em>te conhece.</em></h2>
         <p className="final-sub reveal" style={{ transitionDelay: '.08s' }}>Grátis pra começar. Feito pra ficar.</p>
         <div className="final-ctas reveal" style={{ transitionDelay: '.14s' }}>
-          <a href="#" className="btn btn-white btn-lg">Criar conta grátis</a>
-          <a href="#" className="btn btn-outline-white btn-lg">Quero uma demonstração</a>
+          <a href="#" onClick={openModal} className="btn btn-white btn-lg">Criar conta grátis</a>
+          <a href="#" onClick={openModal} className="btn btn-outline-white btn-lg">Quero uma demonstração</a>
         </div>
         <div className="final-note reveal" style={{ transitionDelay: '.2s' }}>
           <span>Sem cartão de crédito</span>
